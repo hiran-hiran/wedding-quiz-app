@@ -1,40 +1,38 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import { GetServerSideProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import { useEffect } from 'react'
-import { useGetAdminUserQuery } from '../../../types/generated/types'
-import Header from '../../components/Header'
+import {
+  useGetAdminUserQuery,
+  useGetQuizQuery,
+} from '../../../types/generated/types'
+import AdminLayout from '../../components/admin/AdminLayout'
+import LoginInfo from '../../components/admin/LoginInfo'
+import { QuizList } from '../../components/admin/QuizList'
 
-type Props = {}
+// type Props = {}
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   console.log(useGetAdminUserQuery)
+const Home: NextPage = () => {
+  const { data: adminData, loading: adminLoading } = useGetAdminUserQuery()
+  const { data: quizData, loading: quizLoading } = useGetQuizQuery()
 
-//   const { data } = await useGetAdminUserQuery()
-
-//   return {
-//     props: { data },
-//   }
-// }
-
-const Home: NextPage<Props> = (props) => {
-  const { data } = useGetAdminUserQuery()
-
-  // const getToken = async () => {
-  //   const token = await getAccessTokenSilently({
-  //     audience: process.env.NEXT_PUBLIC_AUTH0_AUDIENCE,
-  //   })
-  //   console.log(token)
-  // }
-
-  // console.log(props)
-
-  console.log('data', data)
   return (
-    <div className="">
-      <Header />
-      Home
-      {/* <button onClick={getToken}>token</button> */}
-    </div>
+    <AdminLayout>
+      <h1 className="font-bold text-center text-2xl text-gray-500">Home</h1>
+      {adminLoading ? (
+        <div className="mt-10 text-center text-2xl text-gray-500">
+          Loading...
+        </div>
+      ) : (
+        <LoginInfo data={adminData?.admin_user} />
+      )}
+
+      <div className="mt-10">
+        <h2 className="font-bold text-center text-xl text-gray-500">
+          クイズリスト
+        </h2>
+
+        {quizData && <QuizList quizData={quizData} />}
+      </div>
+    </AdminLayout>
   )
 }
 export default Home

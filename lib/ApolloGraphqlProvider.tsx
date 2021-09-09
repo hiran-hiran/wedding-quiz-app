@@ -4,40 +4,68 @@ import {
   createHttpLink,
   ApolloProvider,
 } from '@apollo/client'
-import { setContext } from '@apollo/client/link/context'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useState, useEffect } from 'react'
+import fetch from 'isomorphic-fetch'
+import AdminLayout from '../src/components/admin/AdminLayout'
 
-export const ApolloGraphqlProvider = ({ children }) => {
-  const { getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0()
-
-  const authLink = setContext(async (_, { headers }) => {
-    let accessToken = null
-    try {
-      accessToken = await getAccessTokenSilently({
-        audience: process.env.NEXT_PUBLIC_AUTH0_AUDIENCE,
-        // scope: 'read:current_user',
-      })
-    } catch (e) {
-      console.log('authLink error', { e })
-    }
-
-    headers = { ...headers }
-    if (accessToken) {
-      headers.authorization = `Bearer ${accessToken}`
-    }
-    console.log('accessToken', { accessToken })
-
-    return { headers }
-  })
-
-  const httpLink = createHttpLink({
-    uri: process.env.NEXT_PUBLIC_END_POINT,
-  })
-
-  const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+const createApolloClient = (authToken) => {
+  return new ApolloClient({
+    ssrMode: typeof window === 'undefined',
+    link: createHttpLink({
+      uri: process.env.NEXT_PUBLIC_END_POINT,
+      headers: {
+        authorization: `Bearer ${authToken}`,
+      },
+      fetch,
+    }),
     cache: new InMemoryCache(),
   })
+}
 
+export const ApolloGraphqlProvider = ({ children }) => {
+  const [client, setClient] = useState<any | null>(null)
+  const {
+    getAccessTokenSilently,
+    getAccessTokenWithPopup,
+    isAuthenticated,
+    loginWithRedirect,
+    isLoading,
+  } = useAuth0()
+
+  const fetchAuthToken = async () => {
+    const authToken = await getAccessTokenSilently({
+      audience: process.env.NEXT_PUBLIC_AUTH0_AUDIENCE,
+    })
+
+    const newApolloClient = createApolloClient(authToken)
+    setClient(newApolloClient)
+  }
+
+  useEffect(() => {
+    if (isAuthenticated) fetchAuthToken()
+  }, [isAuthenticated])
+
+  if (!client || !isAuthenticated) {
+    return (
+      <AdminLayout>
+        <h1 className="font-bold text-center text-2xl text-gray-500">Login</h1>
+        <div className="text-center">
+          {isLoading ? (
+            <div className="mt-10 text-center text-2xl text-gray-500">
+              Loading...
+            </div>
+          ) : (
+            <button
+              className="bg-red-300 mt-10 px-3 py-2 text-white font-bold"
+              onClick={() => loginWithRedirect()}
+            >
+              ログイン
+            </button>
+          )}
+        </div>
+      </AdminLayout>
+    )
+  }
   return <ApolloProvider client={client}>{children}</ApolloProvider>
 }

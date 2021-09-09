@@ -69,6 +69,30 @@ export type Admin_User = {
   created_at: Scalars['timestamptz'];
   id: Scalars['String'];
   name: Scalars['String'];
+  /** An array relationship */
+  quizzes: Array<Quiz>;
+  /** An aggregate relationship */
+  quizzes_aggregate: Quiz_Aggregate;
+};
+
+
+/** columns and relationships of "admin_user" */
+export type Admin_UserQuizzesArgs = {
+  distinct_on?: Maybe<Array<Quiz_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Quiz_Order_By>>;
+  where?: Maybe<Quiz_Bool_Exp>;
+};
+
+
+/** columns and relationships of "admin_user" */
+export type Admin_UserQuizzes_AggregateArgs = {
+  distinct_on?: Maybe<Array<Quiz_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Quiz_Order_By>>;
+  where?: Maybe<Quiz_Bool_Exp>;
 };
 
 /** aggregated selection of "admin_user" */
@@ -101,6 +125,7 @@ export type Admin_User_Bool_Exp = {
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
+  quizzes?: Maybe<Quiz_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "admin_user" */
@@ -114,6 +139,7 @@ export type Admin_User_Insert_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  quizzes?: Maybe<Quiz_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -141,6 +167,13 @@ export type Admin_User_Mutation_Response = {
   returning: Array<Admin_User>;
 };
 
+/** input type for inserting object relation for remote table "admin_user" */
+export type Admin_User_Obj_Rel_Insert_Input = {
+  data: Admin_User_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Admin_User_On_Conflict>;
+};
+
 /** on conflict condition type for table "admin_user" */
 export type Admin_User_On_Conflict = {
   constraint: Admin_User_Constraint;
@@ -153,6 +186,7 @@ export type Admin_User_Order_By = {
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
+  quizzes_aggregate?: Maybe<Quiz_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: admin_user */
@@ -195,6 +229,8 @@ export type Guest_User = {
   id: Scalars['uuid'];
   name: Scalars['String'];
   point: Scalars['Int'];
+  /** An object relationship */
+  quiz: Quiz;
   quiz_id: Scalars['uuid'];
   seat_no?: Maybe<Scalars['String']>;
 };
@@ -229,10 +265,37 @@ export type Guest_User_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "guest_user" */
+export type Guest_User_Aggregate_Order_By = {
+  avg?: Maybe<Guest_User_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Guest_User_Max_Order_By>;
+  min?: Maybe<Guest_User_Min_Order_By>;
+  stddev?: Maybe<Guest_User_Stddev_Order_By>;
+  stddev_pop?: Maybe<Guest_User_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Guest_User_Stddev_Samp_Order_By>;
+  sum?: Maybe<Guest_User_Sum_Order_By>;
+  var_pop?: Maybe<Guest_User_Var_Pop_Order_By>;
+  var_samp?: Maybe<Guest_User_Var_Samp_Order_By>;
+  variance?: Maybe<Guest_User_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "guest_user" */
+export type Guest_User_Arr_Rel_Insert_Input = {
+  data: Array<Guest_User_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Guest_User_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Guest_User_Avg_Fields = {
   __typename?: 'guest_user_avg_fields';
   point?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "guest_user" */
+export type Guest_User_Avg_Order_By = {
+  point?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "guest_user". All fields are combined with a logical 'AND'. */
@@ -245,6 +308,7 @@ export type Guest_User_Bool_Exp = {
   id?: Maybe<Uuid_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   point?: Maybe<Int_Comparison_Exp>;
+  quiz?: Maybe<Quiz_Bool_Exp>;
   quiz_id?: Maybe<Uuid_Comparison_Exp>;
   seat_no?: Maybe<String_Comparison_Exp>;
 };
@@ -267,6 +331,7 @@ export type Guest_User_Insert_Input = {
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
   point?: Maybe<Scalars['Int']>;
+  quiz?: Maybe<Quiz_Obj_Rel_Insert_Input>;
   quiz_id?: Maybe<Scalars['uuid']>;
   seat_no?: Maybe<Scalars['String']>;
 };
@@ -283,6 +348,17 @@ export type Guest_User_Max_Fields = {
   seat_no?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "guest_user" */
+export type Guest_User_Max_Order_By = {
+  a1?: Maybe<Order_By>;
+  a2?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  point?: Maybe<Order_By>;
+  quiz_id?: Maybe<Order_By>;
+  seat_no?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Guest_User_Min_Fields = {
   __typename?: 'guest_user_min_fields';
@@ -293,6 +369,17 @@ export type Guest_User_Min_Fields = {
   point?: Maybe<Scalars['Int']>;
   quiz_id?: Maybe<Scalars['uuid']>;
   seat_no?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "guest_user" */
+export type Guest_User_Min_Order_By = {
+  a1?: Maybe<Order_By>;
+  a2?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  point?: Maybe<Order_By>;
+  quiz_id?: Maybe<Order_By>;
+  seat_no?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "guest_user" */
@@ -318,6 +405,7 @@ export type Guest_User_Order_By = {
   id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   point?: Maybe<Order_By>;
+  quiz?: Maybe<Quiz_Order_By>;
   quiz_id?: Maybe<Order_By>;
   seat_no?: Maybe<Order_By>;
 };
@@ -362,10 +450,20 @@ export type Guest_User_Stddev_Fields = {
   point?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "guest_user" */
+export type Guest_User_Stddev_Order_By = {
+  point?: Maybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Guest_User_Stddev_Pop_Fields = {
   __typename?: 'guest_user_stddev_pop_fields';
   point?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "guest_user" */
+export type Guest_User_Stddev_Pop_Order_By = {
+  point?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -374,10 +472,20 @@ export type Guest_User_Stddev_Samp_Fields = {
   point?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "guest_user" */
+export type Guest_User_Stddev_Samp_Order_By = {
+  point?: Maybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Guest_User_Sum_Fields = {
   __typename?: 'guest_user_sum_fields';
   point?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "guest_user" */
+export type Guest_User_Sum_Order_By = {
+  point?: Maybe<Order_By>;
 };
 
 /** update columns of table "guest_user" */
@@ -404,16 +512,31 @@ export type Guest_User_Var_Pop_Fields = {
   point?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "guest_user" */
+export type Guest_User_Var_Pop_Order_By = {
+  point?: Maybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Guest_User_Var_Samp_Fields = {
   __typename?: 'guest_user_var_samp_fields';
   point?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "guest_user" */
+export type Guest_User_Var_Samp_Order_By = {
+  point?: Maybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Guest_User_Variance_Fields = {
   __typename?: 'guest_user_variance_fields';
   point?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "guest_user" */
+export type Guest_User_Variance_Order_By = {
+  point?: Maybe<Order_By>;
 };
 
 /** mutation root */
@@ -689,13 +812,39 @@ export type Query_RootQuiz_By_PkArgs = {
 /** columns and relationships of "quiz" */
 export type Quiz = {
   __typename?: 'quiz';
+  /** An object relationship */
+  admin_user: Admin_User;
   admin_user_id: Scalars['String'];
+  /** An array relationship */
+  guest_users: Array<Guest_User>;
+  /** An aggregate relationship */
+  guest_users_aggregate: Guest_User_Aggregate;
   id: Scalars['uuid'];
   q1?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
   q2?: Maybe<Scalars['String']>;
   q2a?: Maybe<Scalars['String']>;
   title: Scalars['String'];
+};
+
+
+/** columns and relationships of "quiz" */
+export type QuizGuest_UsersArgs = {
+  distinct_on?: Maybe<Array<Guest_User_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Guest_User_Order_By>>;
+  where?: Maybe<Guest_User_Bool_Exp>;
+};
+
+
+/** columns and relationships of "quiz" */
+export type QuizGuest_Users_AggregateArgs = {
+  distinct_on?: Maybe<Array<Guest_User_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Guest_User_Order_By>>;
+  where?: Maybe<Guest_User_Bool_Exp>;
 };
 
 /** aggregated selection of "quiz" */
@@ -720,12 +869,28 @@ export type Quiz_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "quiz" */
+export type Quiz_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Quiz_Max_Order_By>;
+  min?: Maybe<Quiz_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "quiz" */
+export type Quiz_Arr_Rel_Insert_Input = {
+  data: Array<Quiz_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Quiz_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "quiz". All fields are combined with a logical 'AND'. */
 export type Quiz_Bool_Exp = {
   _and?: Maybe<Array<Quiz_Bool_Exp>>;
   _not?: Maybe<Quiz_Bool_Exp>;
   _or?: Maybe<Array<Quiz_Bool_Exp>>;
+  admin_user?: Maybe<Admin_User_Bool_Exp>;
   admin_user_id?: Maybe<String_Comparison_Exp>;
+  guest_users?: Maybe<Guest_User_Bool_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   q1?: Maybe<String_Comparison_Exp>;
   q1a?: Maybe<String_Comparison_Exp>;
@@ -742,7 +907,9 @@ export enum Quiz_Constraint {
 
 /** input type for inserting data into table "quiz" */
 export type Quiz_Insert_Input = {
+  admin_user?: Maybe<Admin_User_Obj_Rel_Insert_Input>;
   admin_user_id?: Maybe<Scalars['String']>;
+  guest_users?: Maybe<Guest_User_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['uuid']>;
   q1?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
@@ -763,6 +930,17 @@ export type Quiz_Max_Fields = {
   title?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "quiz" */
+export type Quiz_Max_Order_By = {
+  admin_user_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  q1?: Maybe<Order_By>;
+  q1a?: Maybe<Order_By>;
+  q2?: Maybe<Order_By>;
+  q2a?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Quiz_Min_Fields = {
   __typename?: 'quiz_min_fields';
@@ -775,6 +953,17 @@ export type Quiz_Min_Fields = {
   title?: Maybe<Scalars['String']>;
 };
 
+/** order by min() on columns of table "quiz" */
+export type Quiz_Min_Order_By = {
+  admin_user_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  q1?: Maybe<Order_By>;
+  q1a?: Maybe<Order_By>;
+  q2?: Maybe<Order_By>;
+  q2a?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
 /** response of any mutation on the table "quiz" */
 export type Quiz_Mutation_Response = {
   __typename?: 'quiz_mutation_response';
@@ -782,6 +971,13 @@ export type Quiz_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Quiz>;
+};
+
+/** input type for inserting object relation for remote table "quiz" */
+export type Quiz_Obj_Rel_Insert_Input = {
+  data: Quiz_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Quiz_On_Conflict>;
 };
 
 /** on conflict condition type for table "quiz" */
@@ -793,7 +989,9 @@ export type Quiz_On_Conflict = {
 
 /** Ordering options when selecting data from "quiz". */
 export type Quiz_Order_By = {
+  admin_user?: Maybe<Admin_User_Order_By>;
   admin_user_id?: Maybe<Order_By>;
+  guest_users_aggregate?: Maybe<Guest_User_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   q1?: Maybe<Order_By>;
   q1a?: Maybe<Order_By>;
@@ -978,6 +1176,11 @@ export type GetAdminUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAdminUserQuery = { __typename?: 'query_root', admin_user: Array<{ __typename?: 'admin_user', id: string, name: string, created_at: any }> };
 
+export type GetQuizQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetQuizQuery = { __typename?: 'query_root', quiz: Array<{ __typename?: 'quiz', id: any, q1?: Maybe<string>, q1a?: Maybe<string>, q2?: Maybe<string>, q2a?: Maybe<string>, title: string }> };
+
 
 export const GetAdminUserDocument = gql`
     query getAdminUser {
@@ -1015,3 +1218,42 @@ export function useGetAdminUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type GetAdminUserQueryHookResult = ReturnType<typeof useGetAdminUserQuery>;
 export type GetAdminUserLazyQueryHookResult = ReturnType<typeof useGetAdminUserLazyQuery>;
 export type GetAdminUserQueryResult = Apollo.QueryResult<GetAdminUserQuery, GetAdminUserQueryVariables>;
+export const GetQuizDocument = gql`
+    query getQuiz {
+  quiz {
+    id
+    q1
+    q1a
+    q2
+    q2a
+    title
+  }
+}
+    `;
+
+/**
+ * __useGetQuizQuery__
+ *
+ * To run a query within a React component, call `useGetQuizQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetQuizQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetQuizQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetQuizQuery(baseOptions?: Apollo.QueryHookOptions<GetQuizQuery, GetQuizQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetQuizQuery, GetQuizQueryVariables>(GetQuizDocument, options);
+      }
+export function useGetQuizLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetQuizQuery, GetQuizQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetQuizQuery, GetQuizQueryVariables>(GetQuizDocument, options);
+        }
+export type GetQuizQueryHookResult = ReturnType<typeof useGetQuizQuery>;
+export type GetQuizLazyQueryHookResult = ReturnType<typeof useGetQuizLazyQuery>;
+export type GetQuizQueryResult = Apollo.QueryResult<GetQuizQuery, GetQuizQueryVariables>;

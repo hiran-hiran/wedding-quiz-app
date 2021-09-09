@@ -3,7 +3,8 @@ module.exports = {
     {
       [process.env.NEXT_PUBLIC_END_POINT]: {
         headers: {
-          'x-hasura-admin-secret': process.env.HASURA_GRAPHQL_ADMIN_SECRET,
+          'x-hasura-admin-secret':
+            process.env.NEXT_PUBLIC_HASURA_GRAPHQL_ADMIN_SECRET,
           // Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
         },
       },
