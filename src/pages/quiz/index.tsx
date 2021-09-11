@@ -15,7 +15,7 @@ const Home: NextPage<Props> = (props) => {
 
   return (
     <AdminLayout>
-      <LoginInfo />
+      {/* <LoginInfo /> */}
       <div className="">
         Home
         {/* <button onClick={getToken}>token</button> */}
