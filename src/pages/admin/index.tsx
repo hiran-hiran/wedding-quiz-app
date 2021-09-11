@@ -12,7 +12,9 @@ import { QuizList } from '../../components/admin/QuizList'
 
 const Home: NextPage = () => {
   const { data: adminData, loading: adminLoading } = useGetAdminUserQuery()
-  const { data: quizData, loading: quizLoading } = useGetQuizQuery()
+  const { data: quizData, loading: quizLoading } = useGetQuizQuery({
+    fetchPolicy: 'cache-and-network',
+  })
 
   return (
     <AdminLayout>
@@ -29,7 +31,7 @@ const Home: NextPage = () => {
         <h2 className="font-bold text-center text-xl text-gray-500">
           クイズリスト
         </h2>
-
+        <LoginInfo data={quizData?.quiz} />
         {quizData && <QuizList quizData={quizData} />}
       </div>
     </AdminLayout>

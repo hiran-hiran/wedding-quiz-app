@@ -815,15 +815,32 @@ export type Quiz = {
   /** An object relationship */
   admin_user: Admin_User;
   admin_user_id: Scalars['String'];
+  created_at: Scalars['timestamptz'];
   /** An array relationship */
   guest_users: Array<Guest_User>;
   /** An aggregate relationship */
   guest_users_aggregate: Guest_User_Aggregate;
   id: Scalars['uuid'];
   q1?: Maybe<Scalars['String']>;
+  q10?: Maybe<Scalars['String']>;
+  q10a?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
   q2?: Maybe<Scalars['String']>;
   q2a?: Maybe<Scalars['String']>;
+  q3?: Maybe<Scalars['String']>;
+  q3a?: Maybe<Scalars['String']>;
+  q4?: Maybe<Scalars['String']>;
+  q4a?: Maybe<Scalars['String']>;
+  q5?: Maybe<Scalars['String']>;
+  q5a?: Maybe<Scalars['String']>;
+  q6?: Maybe<Scalars['String']>;
+  q6a?: Maybe<Scalars['String']>;
+  q7?: Maybe<Scalars['String']>;
+  q7a?: Maybe<Scalars['String']>;
+  q8?: Maybe<Scalars['String']>;
+  q8a?: Maybe<Scalars['String']>;
+  q9?: Maybe<Scalars['String']>;
+  q9a?: Maybe<Scalars['String']>;
   title: Scalars['String'];
 };
 
@@ -890,12 +907,29 @@ export type Quiz_Bool_Exp = {
   _or?: Maybe<Array<Quiz_Bool_Exp>>;
   admin_user?: Maybe<Admin_User_Bool_Exp>;
   admin_user_id?: Maybe<String_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
   guest_users?: Maybe<Guest_User_Bool_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   q1?: Maybe<String_Comparison_Exp>;
+  q10?: Maybe<String_Comparison_Exp>;
+  q10a?: Maybe<String_Comparison_Exp>;
   q1a?: Maybe<String_Comparison_Exp>;
   q2?: Maybe<String_Comparison_Exp>;
   q2a?: Maybe<String_Comparison_Exp>;
+  q3?: Maybe<String_Comparison_Exp>;
+  q3a?: Maybe<String_Comparison_Exp>;
+  q4?: Maybe<String_Comparison_Exp>;
+  q4a?: Maybe<String_Comparison_Exp>;
+  q5?: Maybe<String_Comparison_Exp>;
+  q5a?: Maybe<String_Comparison_Exp>;
+  q6?: Maybe<String_Comparison_Exp>;
+  q6a?: Maybe<String_Comparison_Exp>;
+  q7?: Maybe<String_Comparison_Exp>;
+  q7a?: Maybe<String_Comparison_Exp>;
+  q8?: Maybe<String_Comparison_Exp>;
+  q8a?: Maybe<String_Comparison_Exp>;
+  q9?: Maybe<String_Comparison_Exp>;
+  q9a?: Maybe<String_Comparison_Exp>;
   title?: Maybe<String_Comparison_Exp>;
 };
 
@@ -909,12 +943,29 @@ export enum Quiz_Constraint {
 export type Quiz_Insert_Input = {
   admin_user?: Maybe<Admin_User_Obj_Rel_Insert_Input>;
   admin_user_id?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
   guest_users?: Maybe<Guest_User_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['uuid']>;
   q1?: Maybe<Scalars['String']>;
+  q10?: Maybe<Scalars['String']>;
+  q10a?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
   q2?: Maybe<Scalars['String']>;
   q2a?: Maybe<Scalars['String']>;
+  q3?: Maybe<Scalars['String']>;
+  q3a?: Maybe<Scalars['String']>;
+  q4?: Maybe<Scalars['String']>;
+  q4a?: Maybe<Scalars['String']>;
+  q5?: Maybe<Scalars['String']>;
+  q5a?: Maybe<Scalars['String']>;
+  q6?: Maybe<Scalars['String']>;
+  q6a?: Maybe<Scalars['String']>;
+  q7?: Maybe<Scalars['String']>;
+  q7a?: Maybe<Scalars['String']>;
+  q8?: Maybe<Scalars['String']>;
+  q8a?: Maybe<Scalars['String']>;
+  q9?: Maybe<Scalars['String']>;
+  q9a?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
@@ -922,22 +973,56 @@ export type Quiz_Insert_Input = {
 export type Quiz_Max_Fields = {
   __typename?: 'quiz_max_fields';
   admin_user_id?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   q1?: Maybe<Scalars['String']>;
+  q10?: Maybe<Scalars['String']>;
+  q10a?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
   q2?: Maybe<Scalars['String']>;
   q2a?: Maybe<Scalars['String']>;
+  q3?: Maybe<Scalars['String']>;
+  q3a?: Maybe<Scalars['String']>;
+  q4?: Maybe<Scalars['String']>;
+  q4a?: Maybe<Scalars['String']>;
+  q5?: Maybe<Scalars['String']>;
+  q5a?: Maybe<Scalars['String']>;
+  q6?: Maybe<Scalars['String']>;
+  q6a?: Maybe<Scalars['String']>;
+  q7?: Maybe<Scalars['String']>;
+  q7a?: Maybe<Scalars['String']>;
+  q8?: Maybe<Scalars['String']>;
+  q8a?: Maybe<Scalars['String']>;
+  q9?: Maybe<Scalars['String']>;
+  q9a?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 /** order by max() on columns of table "quiz" */
 export type Quiz_Max_Order_By = {
   admin_user_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   q1?: Maybe<Order_By>;
+  q10?: Maybe<Order_By>;
+  q10a?: Maybe<Order_By>;
   q1a?: Maybe<Order_By>;
   q2?: Maybe<Order_By>;
   q2a?: Maybe<Order_By>;
+  q3?: Maybe<Order_By>;
+  q3a?: Maybe<Order_By>;
+  q4?: Maybe<Order_By>;
+  q4a?: Maybe<Order_By>;
+  q5?: Maybe<Order_By>;
+  q5a?: Maybe<Order_By>;
+  q6?: Maybe<Order_By>;
+  q6a?: Maybe<Order_By>;
+  q7?: Maybe<Order_By>;
+  q7a?: Maybe<Order_By>;
+  q8?: Maybe<Order_By>;
+  q8a?: Maybe<Order_By>;
+  q9?: Maybe<Order_By>;
+  q9a?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
 };
 
@@ -945,22 +1030,56 @@ export type Quiz_Max_Order_By = {
 export type Quiz_Min_Fields = {
   __typename?: 'quiz_min_fields';
   admin_user_id?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   q1?: Maybe<Scalars['String']>;
+  q10?: Maybe<Scalars['String']>;
+  q10a?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
   q2?: Maybe<Scalars['String']>;
   q2a?: Maybe<Scalars['String']>;
+  q3?: Maybe<Scalars['String']>;
+  q3a?: Maybe<Scalars['String']>;
+  q4?: Maybe<Scalars['String']>;
+  q4a?: Maybe<Scalars['String']>;
+  q5?: Maybe<Scalars['String']>;
+  q5a?: Maybe<Scalars['String']>;
+  q6?: Maybe<Scalars['String']>;
+  q6a?: Maybe<Scalars['String']>;
+  q7?: Maybe<Scalars['String']>;
+  q7a?: Maybe<Scalars['String']>;
+  q8?: Maybe<Scalars['String']>;
+  q8a?: Maybe<Scalars['String']>;
+  q9?: Maybe<Scalars['String']>;
+  q9a?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 /** order by min() on columns of table "quiz" */
 export type Quiz_Min_Order_By = {
   admin_user_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   q1?: Maybe<Order_By>;
+  q10?: Maybe<Order_By>;
+  q10a?: Maybe<Order_By>;
   q1a?: Maybe<Order_By>;
   q2?: Maybe<Order_By>;
   q2a?: Maybe<Order_By>;
+  q3?: Maybe<Order_By>;
+  q3a?: Maybe<Order_By>;
+  q4?: Maybe<Order_By>;
+  q4a?: Maybe<Order_By>;
+  q5?: Maybe<Order_By>;
+  q5a?: Maybe<Order_By>;
+  q6?: Maybe<Order_By>;
+  q6a?: Maybe<Order_By>;
+  q7?: Maybe<Order_By>;
+  q7a?: Maybe<Order_By>;
+  q8?: Maybe<Order_By>;
+  q8a?: Maybe<Order_By>;
+  q9?: Maybe<Order_By>;
+  q9a?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
 };
 
@@ -991,12 +1110,29 @@ export type Quiz_On_Conflict = {
 export type Quiz_Order_By = {
   admin_user?: Maybe<Admin_User_Order_By>;
   admin_user_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
   guest_users_aggregate?: Maybe<Guest_User_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   q1?: Maybe<Order_By>;
+  q10?: Maybe<Order_By>;
+  q10a?: Maybe<Order_By>;
   q1a?: Maybe<Order_By>;
   q2?: Maybe<Order_By>;
   q2a?: Maybe<Order_By>;
+  q3?: Maybe<Order_By>;
+  q3a?: Maybe<Order_By>;
+  q4?: Maybe<Order_By>;
+  q4a?: Maybe<Order_By>;
+  q5?: Maybe<Order_By>;
+  q5a?: Maybe<Order_By>;
+  q6?: Maybe<Order_By>;
+  q6a?: Maybe<Order_By>;
+  q7?: Maybe<Order_By>;
+  q7a?: Maybe<Order_By>;
+  q8?: Maybe<Order_By>;
+  q8a?: Maybe<Order_By>;
+  q9?: Maybe<Order_By>;
+  q9a?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
 };
 
@@ -1010,9 +1146,15 @@ export enum Quiz_Select_Column {
   /** column name */
   AdminUserId = 'admin_user_id',
   /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
   Id = 'id',
   /** column name */
   Q1 = 'q1',
+  /** column name */
+  Q10 = 'q10',
+  /** column name */
+  Q10a = 'q10a',
   /** column name */
   Q1a = 'q1a',
   /** column name */
@@ -1020,17 +1162,62 @@ export enum Quiz_Select_Column {
   /** column name */
   Q2a = 'q2a',
   /** column name */
+  Q3 = 'q3',
+  /** column name */
+  Q3a = 'q3a',
+  /** column name */
+  Q4 = 'q4',
+  /** column name */
+  Q4a = 'q4a',
+  /** column name */
+  Q5 = 'q5',
+  /** column name */
+  Q5a = 'q5a',
+  /** column name */
+  Q6 = 'q6',
+  /** column name */
+  Q6a = 'q6a',
+  /** column name */
+  Q7 = 'q7',
+  /** column name */
+  Q7a = 'q7a',
+  /** column name */
+  Q8 = 'q8',
+  /** column name */
+  Q8a = 'q8a',
+  /** column name */
+  Q9 = 'q9',
+  /** column name */
+  Q9a = 'q9a',
+  /** column name */
   Title = 'title'
 }
 
 /** input type for updating data in table "quiz" */
 export type Quiz_Set_Input = {
   admin_user_id?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   q1?: Maybe<Scalars['String']>;
+  q10?: Maybe<Scalars['String']>;
+  q10a?: Maybe<Scalars['String']>;
   q1a?: Maybe<Scalars['String']>;
   q2?: Maybe<Scalars['String']>;
   q2a?: Maybe<Scalars['String']>;
+  q3?: Maybe<Scalars['String']>;
+  q3a?: Maybe<Scalars['String']>;
+  q4?: Maybe<Scalars['String']>;
+  q4a?: Maybe<Scalars['String']>;
+  q5?: Maybe<Scalars['String']>;
+  q5a?: Maybe<Scalars['String']>;
+  q6?: Maybe<Scalars['String']>;
+  q6a?: Maybe<Scalars['String']>;
+  q7?: Maybe<Scalars['String']>;
+  q7a?: Maybe<Scalars['String']>;
+  q8?: Maybe<Scalars['String']>;
+  q8a?: Maybe<Scalars['String']>;
+  q9?: Maybe<Scalars['String']>;
+  q9a?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
@@ -1039,15 +1226,49 @@ export enum Quiz_Update_Column {
   /** column name */
   AdminUserId = 'admin_user_id',
   /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
   Id = 'id',
   /** column name */
   Q1 = 'q1',
+  /** column name */
+  Q10 = 'q10',
+  /** column name */
+  Q10a = 'q10a',
   /** column name */
   Q1a = 'q1a',
   /** column name */
   Q2 = 'q2',
   /** column name */
   Q2a = 'q2a',
+  /** column name */
+  Q3 = 'q3',
+  /** column name */
+  Q3a = 'q3a',
+  /** column name */
+  Q4 = 'q4',
+  /** column name */
+  Q4a = 'q4a',
+  /** column name */
+  Q5 = 'q5',
+  /** column name */
+  Q5a = 'q5a',
+  /** column name */
+  Q6 = 'q6',
+  /** column name */
+  Q6a = 'q6a',
+  /** column name */
+  Q7 = 'q7',
+  /** column name */
+  Q7a = 'q7a',
+  /** column name */
+  Q8 = 'q8',
+  /** column name */
+  Q8a = 'q8a',
+  /** column name */
+  Q9 = 'q9',
+  /** column name */
+  Q9a = 'q9a',
   /** column name */
   Title = 'title'
 }
@@ -1171,6 +1392,33 @@ export type Uuid_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['uuid']>>;
 };
 
+export type UpdateQuizMutationVariables = Exact<{
+  id: Scalars['uuid'];
+  q1: Scalars['String'];
+  q1a: Scalars['String'];
+  q2: Scalars['String'];
+  q2a: Scalars['String'];
+  q3: Scalars['String'];
+  q3a: Scalars['String'];
+  q4: Scalars['String'];
+  q4a: Scalars['String'];
+  q5: Scalars['String'];
+  q5a: Scalars['String'];
+  q6: Scalars['String'];
+  q6a: Scalars['String'];
+  q7: Scalars['String'];
+  q7a: Scalars['String'];
+  q8: Scalars['String'];
+  q8a: Scalars['String'];
+  q9: Scalars['String'];
+  q9a: Scalars['String'];
+  q10: Scalars['String'];
+  q10a: Scalars['String'];
+}>;
+
+
+export type UpdateQuizMutation = { __typename?: 'mutation_root', update_quiz_by_pk?: Maybe<{ __typename?: 'quiz', id: any, q1?: Maybe<string>, q1a?: Maybe<string>, q2?: Maybe<string>, q2a?: Maybe<string>, q3?: Maybe<string>, q3a?: Maybe<string>, q4?: Maybe<string>, q4a?: Maybe<string>, q5?: Maybe<string>, q5a?: Maybe<string>, q6?: Maybe<string>, q6a?: Maybe<string>, q7?: Maybe<string>, q7a?: Maybe<string>, q8?: Maybe<string>, q8a?: Maybe<string>, q9?: Maybe<string>, q9a?: Maybe<string>, q10?: Maybe<string>, q10a?: Maybe<string> }> };
+
 export type GetAdminUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1179,9 +1427,85 @@ export type GetAdminUserQuery = { __typename?: 'query_root', admin_user: Array<{
 export type GetQuizQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetQuizQuery = { __typename?: 'query_root', quiz: Array<{ __typename?: 'quiz', id: any, q1?: Maybe<string>, q1a?: Maybe<string>, q2?: Maybe<string>, q2a?: Maybe<string>, title: string }> };
+export type GetQuizQuery = { __typename?: 'query_root', quiz: Array<{ __typename?: 'quiz', id: any, created_at: any, title: string, q1?: Maybe<string>, q1a?: Maybe<string>, q2?: Maybe<string>, q2a?: Maybe<string>, q3?: Maybe<string>, q3a?: Maybe<string>, q4?: Maybe<string>, q4a?: Maybe<string>, q5?: Maybe<string>, q5a?: Maybe<string>, q6?: Maybe<string>, q6a?: Maybe<string>, q7?: Maybe<string>, q7a?: Maybe<string>, q8?: Maybe<string>, q8a?: Maybe<string>, q9?: Maybe<string>, q9a?: Maybe<string>, q10?: Maybe<string>, q10a?: Maybe<string> }> };
 
 
+export const UpdateQuizDocument = gql`
+    mutation updateQuiz($id: uuid!, $q1: String!, $q1a: String!, $q2: String!, $q2a: String!, $q3: String!, $q3a: String!, $q4: String!, $q4a: String!, $q5: String!, $q5a: String!, $q6: String!, $q6a: String!, $q7: String!, $q7a: String!, $q8: String!, $q8a: String!, $q9: String!, $q9a: String!, $q10: String!, $q10a: String!) {
+  update_quiz_by_pk(
+    pk_columns: {id: $id}
+    _set: {q1: $q1, q1a: $q1a, q2: $q2, q2a: $q2a, q3: $q3, q3a: $q3a, q4: $q4, q4a: $q4a, q5: $q5, q5a: $q5a, q6: $q6, q6a: $q6a, q7: $q7, q7a: $q7a, q8: $q8, q8a: $q8a, q9: $q9, q9a: $q9a, q10: $q10, q10a: $q10a}
+  ) {
+    id
+    q1
+    q1a
+    q2
+    q2a
+    q3
+    q3a
+    q4
+    q4a
+    q5
+    q5a
+    q6
+    q6a
+    q7
+    q7a
+    q8
+    q8a
+    q9
+    q9a
+    q10
+    q10a
+  }
+}
+    `;
+export type UpdateQuizMutationFn = Apollo.MutationFunction<UpdateQuizMutation, UpdateQuizMutationVariables>;
+
+/**
+ * __useUpdateQuizMutation__
+ *
+ * To run a mutation, you first call `useUpdateQuizMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateQuizMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateQuizMutation, { data, loading, error }] = useUpdateQuizMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      q1: // value for 'q1'
+ *      q1a: // value for 'q1a'
+ *      q2: // value for 'q2'
+ *      q2a: // value for 'q2a'
+ *      q3: // value for 'q3'
+ *      q3a: // value for 'q3a'
+ *      q4: // value for 'q4'
+ *      q4a: // value for 'q4a'
+ *      q5: // value for 'q5'
+ *      q5a: // value for 'q5a'
+ *      q6: // value for 'q6'
+ *      q6a: // value for 'q6a'
+ *      q7: // value for 'q7'
+ *      q7a: // value for 'q7a'
+ *      q8: // value for 'q8'
+ *      q8a: // value for 'q8a'
+ *      q9: // value for 'q9'
+ *      q9a: // value for 'q9a'
+ *      q10: // value for 'q10'
+ *      q10a: // value for 'q10a'
+ *   },
+ * });
+ */
+export function useUpdateQuizMutation(baseOptions?: Apollo.MutationHookOptions<UpdateQuizMutation, UpdateQuizMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateQuizMutation, UpdateQuizMutationVariables>(UpdateQuizDocument, options);
+      }
+export type UpdateQuizMutationHookResult = ReturnType<typeof useUpdateQuizMutation>;
+export type UpdateQuizMutationResult = Apollo.MutationResult<UpdateQuizMutation>;
+export type UpdateQuizMutationOptions = Apollo.BaseMutationOptions<UpdateQuizMutation, UpdateQuizMutationVariables>;
 export const GetAdminUserDocument = gql`
     query getAdminUser {
   admin_user {
@@ -1222,11 +1546,28 @@ export const GetQuizDocument = gql`
     query getQuiz {
   quiz {
     id
+    created_at
+    title
     q1
     q1a
     q2
     q2a
-    title
+    q3
+    q3a
+    q4
+    q4a
+    q5
+    q5a
+    q6
+    q6a
+    q7
+    q7a
+    q8
+    q8a
+    q9
+    q9a
+    q10
+    q10a
   }
 }
     `;
