@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Link from 'next/link'
 import { useEffect } from 'react'
 import {
   useGetAdminUserQuery,
@@ -32,6 +33,9 @@ const Home: NextPage = () => {
           クイズリスト
         </h2>
         <LoginInfo data={quizData?.quiz} />
+        <Link href={`/quiz/${quizData?.quiz[0].id}/`}>
+          <a>クイズを見る</a>
+        </Link>
         {quizData && <QuizList quizData={quizData} />}
       </div>
     </AdminLayout>

@@ -39,3 +39,33 @@ export const GET_QUIZ = gql`
     }
   }
 `
+
+export const GET_QUIZ_BY_ID = gql`
+  query getQuizById($id: uuid!) {
+    quiz_by_pk(id: $id) {
+      id
+      created_at
+      title
+      q1
+      q1a
+      q2
+      q2a
+      q3
+      q3a
+      q4
+      q4a
+      q5
+      q5a
+      q6
+      q6a
+      q7
+      q7a
+      q8
+      q8a
+      q9
+      q9a
+      q10
+      q10a
+    }
+  }
+`

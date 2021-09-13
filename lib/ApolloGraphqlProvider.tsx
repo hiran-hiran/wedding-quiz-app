@@ -11,7 +11,6 @@ import AdminLayout from '../src/components/admin/AdminLayout'
 
 const createApolloClient = (authToken) => {
   return new ApolloClient({
-    ssrMode: typeof window === 'undefined',
     link: createHttpLink({
       uri: process.env.NEXT_PUBLIC_END_POINT,
       headers: {
