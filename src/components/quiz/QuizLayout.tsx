@@ -8,7 +8,7 @@ type Props = {
 const QuizLayout: VFC<Props> = ({ children }) => {
   return (
     <>
-      <main className="max-w-3xl mx-auto px-5 py-10">
+      <main className="max-w-3xl mx-auto px-5 py-10 ">
         <div className="mx-auto max-w-screen-sm">{children}</div>
       </main>
     </>

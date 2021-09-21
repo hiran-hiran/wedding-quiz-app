@@ -23,5 +23,6 @@ export const initializeApollo = () => {
   const _apolloClient = apolloClient ?? createApolloClient()
   if (typeof window === 'undefined') return _apolloClient
   if (!apolloClient) apolloClient = _apolloClient
+
   return _apolloClient
 }
