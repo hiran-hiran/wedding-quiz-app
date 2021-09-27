@@ -11,14 +11,16 @@ import {
 import QuizLayout from '../../../components/quiz/QuizLayout'
 import { BsX } from 'react-icons/bs'
 import { BiCircle } from 'react-icons/bi'
-import { IconContext } from 'react-icons/lib'
 
 const Home: NextPage<{ data: GetQuizByIdQuery }> = ({
   data: { quiz_by_pk },
 }) => {
+  const router = useRouter()
   const [update_guest_user_by_pk] = useUpdateGuestUserMutation()
   const { ...quizes } = quiz_by_pk
   const [point, setPoint] = useState(0)
+  const [current, setCurrent] = useState(0)
+  const [quizNode, setQuizNode] = useState<NodeListOf<Element>>()
   const [answers, setAnswers] = useState({
     q1a: '',
     q2a: '',
@@ -60,6 +62,20 @@ const Home: NextPage<{ data: GetQuizByIdQuery }> = ({
     q10a: quizes.q10a,
   }
 
+  useEffect(() => {
+    const guestUserId = localStorage.getItem('quest-user-id')
+    !guestUserId && router.push(`./${router.query.quizId}/signup`)
+  }, [])
+
+  useEffect(() => {
+    const qqq = document.querySelectorAll('[data-index]')
+    setQuizNode(qqq)
+  }, [])
+
+  useEffect(() => {
+    window && quizNode && quizNode[current].classList.remove('invisible')
+  }, [quizNode])
+
   const handleClick = (e) => {
     const answer = e.currentTarget.dataset.answer
     const quizNum = e.currentTarget.dataset.quiz
@@ -69,6 +85,18 @@ const Home: NextPage<{ data: GetQuizByIdQuery }> = ({
     if (answerArr[quizNum] === answer) {
       setPoint((prev) => (prev += 1))
     }
+
+    if (current < quizNode.length) {
+      // console.log(quizNode.length)
+
+      quizNode[current].classList.add('invisible')
+      if (current < quizNode.length - 1) {
+        quizNode[current + 1].classList.remove('invisible')
+      }
+      setCurrent((prev) => (prev += 1))
+    }
+
+    // qqq[current].classList.remove('invisible')
   }
 
   const handleSubmit = async (e) => {
@@ -91,15 +119,20 @@ const Home: NextPage<{ data: GetQuizByIdQuery }> = ({
       },
     })
 
-    console.log('res', data)
+    data && localStorage.removeItem('quest-user-id')
+    data && router.push(`./${router.query.quizId}/result`)
   }
 
   return (
     <QuizLayout>
-      <form onSubmit={handleSubmit} className="border border-gray-100">
-        <ul>
+      <form onSubmit={handleSubmit} className="">
+        <ul className="relative">
           {quizArr.map((el, i) => (
-            <li className="mt-3" key={i}>
+            <li
+              className={`mb-4 pb-5 border-b w-full absolute invisible`}
+              data-index={i + 1}
+              key={i}
+            >
               <p className="">{el}</p>
               <div className="flex justify-center mt-2">
                 <div
@@ -108,11 +141,7 @@ const Home: NextPage<{ data: GetQuizByIdQuery }> = ({
                   data-answer="o"
                   data-quiz={`q${i + 1}a`}
                 >
-                  <IconContext.Provider
-                    value={{ color: 'white', size: '1.1em' }}
-                  >
-                    <BiCircle />
-                  </IconContext.Provider>
+                  <BiCircle color="white" size="1.1rem" />
                 </div>
                 <div
                   className="flex justify-center items-center bg-red-400 h-10 w-14 mr-3 cursor-pointer"
@@ -120,17 +149,23 @@ const Home: NextPage<{ data: GetQuizByIdQuery }> = ({
                   data-answer="x"
                   data-quiz={`q${i + 1}a`}
                 >
-                  <IconContext.Provider
-                    value={{ color: 'white', size: '1.1em' }}
-                  >
-                    <BsX />
-                  </IconContext.Provider>
+                  <BsX color="white" size="1.5rem" />
                 </div>
               </div>
             </li>
           ))}
         </ul>
-        <button>OK</button>
+        <div className="text-center">
+          <button
+            className={
+              current === 10
+                ? 'bg-red-300 mt-10 px-5 py-2 text-white font-bold'
+                : 'bg-red-300 mt-10 px-5 py-2 text-white font-bold invisible'
+            }
+          >
+            OK
+          </button>
+        </div>
       </form>
     </QuizLayout>
   )

@@ -34,7 +34,9 @@ const Home: NextPage = () => {
         </h2>
         <LoginInfo data={quizData?.quiz} />
         <Link href={`/quiz/${quizData?.quiz[0].id}/`}>
-          <a>クイズを見る</a>
+          <a className="mt-2 py-2 inline-block border-b" target="_blank">
+            クイズを見る
+          </a>
         </Link>
         {quizData && <QuizList quizData={quizData} />}
       </div>

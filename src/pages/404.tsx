@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 type Props = {}
 
-const Home: NextPage<Props> = () => {
+const Custom404: NextPage<Props> = () => {
   return (
     <main className="max-w-3xl mx-auto px-5 py-10">
       <Link href="/admin/">
@@ -19,4 +19,4 @@ const Home: NextPage<Props> = () => {
     </main>
   )
 }
-export default Home
+export default Custom404
