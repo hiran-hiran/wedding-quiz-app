@@ -1,9 +1,9 @@
-import { VFC } from 'react'
-import Link from 'next/link'
+import { VFC } from "react";
+import Link from "next/link";
 
 const Header: VFC = () => {
   return (
-    <header className="p-5 bg-red-300">
+    <header className="p-5 bg-fandango">
       <nav>
         <Link href="/admin/">
           <a className="text-white">Home</a>
@@ -13,7 +13,7 @@ const Header: VFC = () => {
         </Link>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

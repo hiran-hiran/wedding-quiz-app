@@ -1,23 +1,23 @@
-import React, { VFC } from 'react'
-import { UseFormRegister, FieldValues } from 'react-hook-form'
-import { BsX } from 'react-icons/bs'
-import { BiCircle } from 'react-icons/bi'
-import { IconContext } from 'react-icons/lib'
+import React, { VFC } from "react";
+import { UseFormRegister, FieldValues } from "react-hook-form";
+import { BsX } from "react-icons/bs";
+import { BiCircle } from "react-icons/bi";
+import { IconContext } from "react-icons/lib";
 
 type Props = {
-  register: UseFormRegister<FieldValues>
-  index: number
-}
+  register: UseFormRegister<FieldValues>;
+  index: number;
+};
 
 export const QuizListItem: VFC<Props> = ({ register, index }) => {
   return (
-    <li className="py-5 first:pt-0 border-t first:border-t-0">
-      <p className="block text-gray-500 text-lg font-bold">{`Q. ${index}`}</p>
+    <li className="p-5 bg-white ">
+      <p className="block text-sm text-gray-500 text-lg font-bold">{`Q. ${index}`}</p>
       <textarea
         {...register(`q${index}`)}
         id={`q${index}`}
         placeholder="問題文"
-        className="mt-2 p-2 w-full"
+        className="mt-2 p-2 w-full text-lg border-b text-gray-600"
       ></textarea>
       <div className="flex items-center justify-end">
         <p className="mr-4 text-sm font-bold text-gray-500">答え</p>
@@ -33,7 +33,7 @@ export const QuizListItem: VFC<Props> = ({ register, index }) => {
             radioGroup={`q${index}a`}
             className="mr-2"
           />
-          <IconContext.Provider value={{ color: '#1ec02b', size: '1.1em' }}>
+          <IconContext.Provider value={{ color: "#1ec02b", size: "1.1em" }}>
             <BiCircle />
           </IconContext.Provider>
         </label>
@@ -50,8 +50,8 @@ export const QuizListItem: VFC<Props> = ({ register, index }) => {
           />
           <IconContext.Provider
             value={{
-              color: 'red',
-              size: '1.5em',
+              color: "red",
+              size: "1.5em",
             }}
           >
             <BsX />
@@ -59,5 +59,5 @@ export const QuizListItem: VFC<Props> = ({ register, index }) => {
         </label>
       </div>
     </li>
-  )
-}
+  );
+};

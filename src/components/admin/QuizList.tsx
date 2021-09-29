@@ -1,20 +1,20 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { VFC } from 'react'
-import { useForm } from 'react-hook-form'
+import React from "react";
+import { useEffect } from "react";
+import { VFC } from "react";
+import { useForm } from "react-hook-form";
 import {
   GetQuizQuery,
   useUpdateQuizMutation,
-} from '../../../types/generated/types'
-import { QuizListItem } from './QuizListItem'
+} from "../../../types/generated/types";
+import { QuizListItem } from "./QuizListItem";
 
 type Props = {
-  quizData: GetQuizQuery
-}
+  quizData: GetQuizQuery;
+};
 
 export const QuizList: VFC<Props> = ({ quizData }) => {
-  const { register, handleSubmit, setValue } = useForm()
-  const [update_quiz_by_pk] = useUpdateQuizMutation()
+  const { register, handleSubmit, setValue } = useForm();
+  const [update_quiz_by_pk] = useUpdateQuizMutation();
 
   const {
     id,
@@ -40,7 +40,7 @@ export const QuizList: VFC<Props> = ({ quizData }) => {
     q9a,
     q10,
     q10a,
-  } = quizData.quiz[0]
+  } = quizData.quiz[0];
 
   const handlePost = async (data) => {
     await update_quiz_by_pk({
@@ -67,45 +67,45 @@ export const QuizList: VFC<Props> = ({ quizData }) => {
         q10: data.q10,
         q10a: data.q10a,
       },
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    setValue('q1', q1)
-    setValue('q2', q2)
-    setValue('q3', q3)
-    setValue('q4', q4)
-    setValue('q5', q5)
-    setValue('q6', q6)
-    setValue('q7', q7)
-    setValue('q8', q8)
-    setValue('q9', q9)
-    setValue('q10', q10)
-    setValue('q1a', q1a)
-    setValue('q2a', q2a)
-    setValue('q3a', q3a)
-    setValue('q4a', q4a)
-    setValue('q5a', q5a)
-    setValue('q6a', q6a)
-    setValue('q7a', q7a)
-    setValue('q8a', q8a)
-    setValue('q9a', q9a)
-    setValue('q10a', q10a)
-  }, [quizData])
+    setValue("q1", q1);
+    setValue("q2", q2);
+    setValue("q3", q3);
+    setValue("q4", q4);
+    setValue("q5", q5);
+    setValue("q6", q6);
+    setValue("q7", q7);
+    setValue("q8", q8);
+    setValue("q9", q9);
+    setValue("q10", q10);
+    setValue("q1a", q1a);
+    setValue("q2a", q2a);
+    setValue("q3a", q3a);
+    setValue("q4a", q4a);
+    setValue("q5a", q5a);
+    setValue("q6a", q6a);
+    setValue("q7a", q7a);
+    setValue("q8a", q8a);
+    setValue("q9a", q9a);
+    setValue("q10a", q10a);
+  }, [quizData]);
 
   return (
     <form className="" onSubmit={handleSubmit(handlePost)}>
-      <ul className="mt-5 p-5 bg-gray-100">
+      <ul className="mt-5 shadow-lg">
         {[...Array(10)].map((el, i) => (
           <QuizListItem key={i} index={i + 1} register={register} />
         ))}
       </ul>
 
       <div className="text-center">
-        <button className="bg-red-300 mt-10 px-5 py-2 text-white font-bold">
-          登録
+        <button className="block w-full bg-fandango mt-8 p-3 text-center text-white font-bold rounded-full shadow-lg">
+          保存
         </button>
       </div>
     </form>
-  )
-}
+  );
+};
