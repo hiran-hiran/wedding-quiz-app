@@ -13,7 +13,10 @@ const Home: NextPage<Props> = () => {
       </Link>
       <Link href="/quiz/">
         <a className="block w-full bg-fandango mb-8 p-3 text-center text-white font-bold rounded-full">
-          quizページ
+          {/* <Link href="/quiz/">
+        <a className="block bg-red-300 mt-10 px-3 py-2 text-center text-white font-bold">
+>>>>>>> fcc806c81adf36a771766bc0cd54b082191c76aa
+          quizページ */}
         </a>
       </Link>
     </main>
