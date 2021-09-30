@@ -37,7 +37,7 @@ const Home: NextPage = () => {
         <LoginInfo data={quizData?.quiz} />
 
         <Link href={`/quiz/${quizData?.quiz[0].id}/`}>
-          <a className="flex items-center justify-center w-1/3 mt-4 ml-auto text-sm text-white font-bold rounded-full bg-gray-500">
+          <a className="flex items-center justify-center w-1/2 mt-4 ml-auto text-sm text-white font-bold rounded-full bg-gray-500">
             クイズを見る
             <BsArrowRightShort size="2rem" />
           </a>
